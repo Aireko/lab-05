@@ -52,17 +52,17 @@ public class CityDialogFragment extends DialogFragment {
         Bundle bundle = getArguments();
         City city;
 
-        if (Objects.equals(tag, "City Details") && bundle != null){
+        if (Objects.equals(tag, "City Details") && bundle != null) {
             city = (City) bundle.getSerializable("City");
             assert city != null;
             editMovieName.setText(city.getName());
             editMovieYear.setText(city.getProvince());
+        } else {
+            city = null;
         }
-        else {
-            city = null;}
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        return builder
+        builder
                 .setView(view)
                 .setTitle("City Details")
                 .setNegativeButton("Cancel", null)
@@ -74,7 +74,21 @@ public class CityDialogFragment extends DialogFragment {
                     } else {
                         listener.addCity(new City(title, year));
                     }
-                })
-                .create();
+                });
+
+        if (Objects.equals(tag, "City Details") && city != null) {
+            City finaCity = city;
+            builder.setNeutralButton("Delete", (dialog,which) -> {
+                // confirmation dialog
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Delete City")
+                        .setMessage("Are you sure you want to delete " + finaCity.getName())
+                        .setPositiveButton("Delete", (confirmDialog, confirmWhich) -> {
+                    listener.deleteCity(finaCity);
+                }) .setNegativeButton("Cancel", null).show();
+            });
+        }
+
+        return builder.create();
     }
 }
