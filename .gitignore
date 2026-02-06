@@ -1,4 +1,4 @@
 ListyCity/local.properties
-.idea
-build
-.gradle
+ListyCity/.idea
+ListyCity/build
+ListyCity/.gradle
