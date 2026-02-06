@@ -2,12 +2,16 @@
 
 ## Student Details
 
-- **Full Name:** `<Enter name>`
-- **CCID:** `<Enter ccid>`
+- **Full Name:** `Phil Jiang`
+- **CCID:** `phil2`
 
 ## References and Resources
 
 List any resources used here, or simply put `N/A` if not applicable.
+https://developer.android.com/develop/ui/views/components/dialogs
+https://ualberta-cmput301.github.io/labs/slides/Lab5FIntegNew.pdf
+https://ualberta-cmput301.github.io/labs/slides/Lab5FIntegNew.pdf
+cmput 301 lab 5 Participation Exercise
 
 ## Verbal Collaboration
 
