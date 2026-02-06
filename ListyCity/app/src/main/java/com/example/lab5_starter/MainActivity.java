@@ -99,4 +99,17 @@ public class MainActivity extends AppCompatActivity implements CityDialogFragmen
         DocumentReference docRef = citiesRef.document(city.getName());
         docRef.set(city);
     }
+
+    @Override
+    public void deleteCity(City city) {
+        cityArrayList.remove(city);
+        cityArrayAdapter.notifyDataSetChanged();
+
+        citiesRef.document(city.getName()).delete().addOnSuccessListener(aVoid -> {
+            Log.d("Firestore", "City deleted");
+        })
+                .addOnFailureListener(e -> {
+                    Log.e("Firestore", "Error removing city");
+                });
+    }
 }
